@@ -1,0 +1,11 @@
+table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-collapse: collapse;
+  tr {
+    border: 0.5px dashed blue;
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
+  }
+}

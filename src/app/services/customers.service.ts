@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomersService {
 
-  url = 'http://localhost:8888/php_backend/';
+  url = 'http://localhost:8888/customer_management_backend/';
 
   constructor(private http: HttpClient) { }
 

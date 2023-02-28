@@ -5,22 +5,15 @@
       <td>Id</td>
       <td>Nombre</td>
       <td>Apellidos</td>
-      <td>Borrar</td>
-      <td>Seleccionar</td>
-      <td>Id</td>
-      <td>Descripcion</td>
-      <td>Precio</td>
-      <td>Borrar</td>
-      <td>Seleccionar</td>
-      <td>Id</td>
-      <td>Descripcion</td>
-      <td>Precio</td>
-      <td>Borrar</td>
-      <td>Seleccionar</td>
-      <td>Id</td>
-      <td>Descripcion</td>
-      <td>Precio</td>
+      <td>Nombre fiscal</td>
+      <td>NIF/CIF</td>
+      <td>Dirección</td>
+      <td>CP</td>
+      <td>Población</td>
+      <td>Provincia</td>
+      <td>Teléfono</td>
 
+<!-- id, nombre, apellidos, nombre_fiscal, nif_cif, direccion, codigo_postal, poblacion, provincia, telefono -->
     </tr>
     <tr *ngFor="let cus of customers">
       <td>{{cus.id}}</td>
@@ -29,18 +22,10 @@
       <td>{{cus.nombre_fiscal}}</td>
       <td>{{cus.nif_cif}}</td>
       <td>{{cus.direccion}}</td>
-      <td>{{cus.direccion_fiscal}}</td>
       <td>{{cus.codigo_postal}}</td>
       <td>{{cus.poblacion}}</td>
       <td>{{cus.provincia}}</td>
-      <td>{{cus.email}}</td>
-      <td>{{cus.pagina_web}}</td>
-      <td>{{cus.cuenta_corriente}}</td>
       <td>{{cus.telefono}}</td>
-      <td>{{cus.telefono_2}}</td>
-      <td>{{cus.telefono_3}}</td>
-      <td>{{cus.contacto}}</td>
-      <td>{{cus.contacto_2}}</td>
       <td><button (click)="baja(cus.id)">Borrar?</button></td>
       <td><button (click)="seleccionar(cus.id)">Seleccionar</button></td>
     </tr>
@@ -53,10 +38,77 @@
       Nombre:<input type="text" [(ngModel)]="cus.nombre" />
     </p>
     <p>
-      Apellidos:<input type="number" [(ngModel)]="cus.apellidos" />
+      Apellidos:<input type="text" [(ngModel)]="cus.apellidos" />
     </p>
     <p><button (click)="alta()">Agregar</button>
       <button (click)="modificacion()">Modificar</button>
     </p>
   </div>
 </div>
+
+<!-- <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field> [dataSource]="dataSource"-->
+<!--
+<table mat-table  class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellidos">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.apellidos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nif_cif">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.nif_cif}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre_fiscal">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.nombre_fiscal}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="direccion">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.direccion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="codigo_postal">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.codigo_postal}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="poblacion">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.poblacion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="provincia">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let customers"> {{cus.provincia}} </td>
+  </ng-container>
+
+<ng-container matColumnDef="telefono">
+  <th mat-header-cell *matHeaderCellDef> Symbol </th>
+  <td mat-cell *matCellDef="let customers"> {{cus.telefono}} </td>
+</ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+  </tr>
+</table>
+ -->

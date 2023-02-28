@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule,

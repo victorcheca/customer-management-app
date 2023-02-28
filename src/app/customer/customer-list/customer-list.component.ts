@@ -1,5 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CustomersService } from 'src/app/services/customers.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DataSource } from '@angular/cdk/collections';
+
+/* export interface ICustomerRecord {
+  id: number,
+  nombre: string,
+  apellidos: string,
+  nif_cif: string,
+  nombre_fiscal: string,
+  direccion: string,
+  codigo_postal: number,
+  poblacion: string,
+  provincia: string,
+  telefono: string
+}
+@Injectable({
+  providedIn: 'root'
+}) */
 
 @Component({
   selector: 'customer-list',
@@ -8,41 +30,44 @@ import { CustomersService } from 'src/app/services/customers.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  customers: any;
+  public customers: any;
 
-  cus = {
+  public cus = {
     id: 0,
-    nombre: "",
-    apellidos: ""
-    /*  nombre_fiscal: '',
-     nif_cif: '',
-     direccion: '',
-     direccion_fiscal: '',
-     codigo_postal: 0,
-     poblacion: '',
-     provincia: '',
-     email: '',
-     pagina_web: '',
-     cuenta_corriente: '',
-     telefono: '',
-     telefono_2: '',
-     telefono_3: '',
-     contacto: '',
-     contacto_2: '' */
+    nombre: '',
+    apellidos: '',
+    nif_cif: '',
+    nombre_fiscal: '',
+    direccion: '',
+    codigo_postal: 0,
+    poblacion: '',
+    provincia: '',
+    telefono: ''
+
   }
 
-  constructor(private customersService: CustomersService) { }
+  /*   private _customer_list: ICustomerRecord[] = [];
+  
+    public displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'nif_cif', 'nombre_fiscal', 'direccion', 'codigo_postal', 'poblacion', 'provincia', 'telefono'];
+  
+    public dataSource = this._CustomerS;
+   */
+
+  constructor(private _CustomerS: CustomersService) {
+
+  }
 
   ngOnInit() {
     this.recuperarTodos();
+
   }
 
   recuperarTodos() {
-    this.customersService.recuperarTodos().subscribe((result: any) => this.customers = result);
+    this._CustomerS.recuperarTodos().subscribe((result: any) => this.customers = result);
   }
 
   public alta() {
-    this.customersService.alta(this.cus).subscribe((datos: any) => {
+    this._CustomerS.alta(this.cus).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -51,7 +76,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   public baja(id: number) {
-    this.customersService.baja(id).subscribe((datos: any) => {
+    this._CustomerS.baja(id).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -60,7 +85,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   public modificacion() {
-    this.customersService.modificacion(this.cus).subscribe((datos: any) => {
+    this._CustomerS.modificacion(this.cus).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -69,11 +94,16 @@ export class CustomerListComponent implements OnInit {
   }
 
   public seleccionar(id: number) {
-    this.customersService.seleccionar(id).subscribe((result: any) => this.cus = result[0]);
+    this._CustomerS.seleccionar(id).subscribe((result: any) => this.cus = result[0]);
   }
 
   public hayRegistros() {
     return true;
   }
+
+  /*  applyFilter(event: Event) {
+     const filterValue = (event.target as HTMLInputElement).value;
+     this.customersService.filter = filterValue.trim().toLowerCase();
+   } */
 
 }
