@@ -62,7 +62,7 @@ export class CustomerListComponent implements OnInit {
 
   }
 
-  recuperarTodos() {
+  recuperarTodos() {    
     this._CustomerS.recuperarTodos().subscribe((result: any) => this.customers = result);
   }
 
